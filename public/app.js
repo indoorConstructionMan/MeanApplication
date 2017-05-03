@@ -1,14 +1,16 @@
-var app = angular.module('gas-log', [])
+var app = angular.module('gasChartApp', ['ng-fusioncharts']);
 
-app.controller('testCtrl', function($scope, $http) {
-    $scope.data = [];
-    var request = $http.get('/gaslog');
-
-    request.success(function(data) {
-        $scope.data = data;
-    });
-
-    request.error(function(data){
-        console.log('Error: ' + data);
-    });
-});
+	app.controller('testCtrl', function($scope) {
+		// chart data source
+  		$scope.dataSource = {
+    		"chart": {
+      			"caption": "Column Chart Built in Angular!",
+     			"captionFontSize": "30",
+      			// more chart properties - explained later
+    		},
+    		"data": [{
+        		"label": "CornflowerBlue",
+        		"value": "42"
+      		},]
+  		};
+	}); 

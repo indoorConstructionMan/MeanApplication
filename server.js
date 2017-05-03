@@ -1,34 +1,30 @@
+// Includes express package, initializes express.
 var express = require('express'),
-    app = express(),
-    morgan = require('morgan'),
-    mongoose = require('mongoose'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+	app = express();
 
-mongoose.connect('localhost:27017');
+var bodyParser = require('body-parser');
+
+ 
+app.use('/fc', express.static(__dirname + '/node_modules/fusioncharts'));
+app.use('/jq', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/ng', express.static(__dirname + '/node_modules/angular'));
+app.use('/scripts', express.static(__dirname + '/scripts'));
 app.use(express.static(__dirname + '/public'));
-app.use(morgan('combined'));
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
-app.use(bodyParser.json({type: 'application/vnd.api+json' }));
-app.use(methodOverride());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 
-var router = express.Router();
 
-router.get('/', function(req,res){
-    res.sendFile('index.html');
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-router.get('/gaslog', function(req,res){
-    res.json({ name: "Aaron"});
+app.get('*', function(req, res) {
+    res.sendFile(__dirname +'/public/index.html');
 });
 
-router.get('/hello/:name', function(req, res) {
-    res.send('hello ' + req.params.name + '!');
-});
-
-app.use('/', router);
 
 app.listen(8080);
-console.log('Server on port 8000');
+console.log("Server listening...");

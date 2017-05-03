@@ -1,27 +1,19 @@
 {
-  "name": "gas-log",
-  "version": "1.0.0",
-  "description": "An application that stores gas logs and graphs efficiency, etc.",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/indoorConstructionMan/MeanApplication.git"
-  },
-  "author": "dubsy",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/indoorConstructionMan/MeanApplication/issues"
-  },
-  "dependencies": {
-    "express" : "~4.5.1",
-    "mongoose" : "~3.8.0",
-    "body-parser" : "~1.4.2",
-    "method-override" : "~2.0.2",
-    "morgan" : "^1.1.1"
-   },
-  "homepage": "https://github.com/indoorConstructionMan/MeanApplication#readme"
+  "name"         : "gaschartapp",
+  "version"      : "0.0.0",
+  "description"  : "Simple gas mileage and charting application.",
+  "main"         : "server.js",
+  "author"       : "Dubsy",
+  "dependencies" : {
+    "angular":          "latest",
+    "body-parser"    : "latest",
+    "express"        : "latest",
+    "method-override": "latest",
+    "mongoose"       : "latest",
+    "morgan"         : "latest",
+    "jquery"         : "latest",
+    "gulp"           : "latest",
+    "bootstrap"      : "latest",
+    "fusioncharts"   : "latest"
+  }
 }
