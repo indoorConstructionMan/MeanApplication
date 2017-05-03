@@ -13,4 +13,14 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts']);
         		"value": "42"
       		},]
   		};
-	}); 
+	});
+
+	app.controller('formCtrl', [ '$scope', function($scope, $http){
+		$scope.gasData = [];
+		$scope.quantity = "4";
+
+		$scope.submit = function(){
+			$scope.gasData.push(this.quantity);
+			console.log(this.quantity);
+		};
+	}]);

@@ -12,12 +12,24 @@
 	<body ng-controller="testCtrl">
 
 		<fusioncharts
-	        width= "100%" 
+	        width= "100%"
 	        height= "400"
 	        type= "column2d"
 	        dataFormat= "json"
 	        dataSource= "{{dataSource}}">
     	</fusioncharts>
+
+			<div ng-controller="formCtrl">
+				<br><br>
+				<form ng-submit="submit()">
+		 			Unit Price: <input type="text" ng-model="unitPrice">[$/L]<br><br>
+					Car Odometer: <input type="text" ng-model="odometer">[km]<br><br>
+		 			Quantity: <input type="text" ng-model="quantity">[L]<br><br>
+					Total Price: <input type="text" ng-model="totalPrice">[$]<br><br>
+					Date: <input type="text" ng-model="date"><br><br>
+  				<input type="submit" id="submit" value="Submit" />
+				</form>
+			</div>
 
 	</body>
 </html>
