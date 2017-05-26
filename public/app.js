@@ -1,4 +1,4 @@
-var app = angular.module('gasChartApp', ['ng-fusioncharts']);
+var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 
 	app.controller('testCtrl', function($scope) {
 		// chart data source
@@ -24,3 +24,30 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts']);
 			console.log(this.quantity);
 		};
 	}]);
+
+
+	app.config(['$qProvider', function ($qProvider) {
+		$qProvider.errorOnUnhandledRejections(false);
+	}]);
+
+	app.config(function($stateProvider, $urlRouterProvider) {
+
+    	$urlRouterProvider.otherwise('/gasup');
+
+    	$stateProvider
+
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('gasup', {
+            url: '/gasup',
+            templateUrl: 'snippet-gasForm.html'
+        })
+
+        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        .state('chartview', {
+            // we'll get to this in a bit       
+
+            url: '/chartview',
+            templateUrl: 'snippet-chart.html'
+        });
+
+});

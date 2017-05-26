@@ -7,29 +7,32 @@
 		<script type="text/javascript" src="/fc/fusioncharts.js"></script>
 		<script type="text/javascript" src="/fc/fusioncharts.charts.js"></script>
 		<script type="text/javascript" src="/scripts/angular-fusioncharts.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
  	    <script type="text/javascript" src="app.js"></script>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    	<style>
+        	.navbar { border-radius:0; }
+    	</style>
+
 	</head>
-	<body ng-controller="testCtrl">
+	<body>
 
-		<fusioncharts
-	        width= "100%"
-	        height= "400"
-	        type= "column2d"
-	        dataFormat= "json"
-	        dataSource= "{{dataSource}}">
-    	</fusioncharts>
+		<nav class="navbar navbar-inverse" role="navigation">
+		    <div class="navbar-header">
+		        <a class="navbar-brand" ui-sref="#">Gas Logger</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		        <li><a ui-sref="gasup">Gas up</a></li>
+		        <li><a ui-sref="chartview">View Chart</a></li>
+		    </ul>
+		</nav>
 
-			<div ng-controller="formCtrl">
-				<br><br>
-				<form ng-submit="submit()">
-		 			Unit Price: <input type="text" ng-model="unitPrice">[$/L]<br><br>
-					Car Odometer: <input type="text" ng-model="odometer">[km]<br><br>
-		 			Quantity: <input type="text" ng-model="quantity">[L]<br><br>
-					Total Price: <input type="text" ng-model="totalPrice">[$]<br><br>
-					Date: <input type="text" ng-model="date"><br><br>
-  				<input type="submit" id="submit" value="Submit" />
-				</form>
-			</div>
+		<div class="container">
+    		<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+    		<div ui-view></div>
+		</div>
+
 
 	</body>
 </html>
