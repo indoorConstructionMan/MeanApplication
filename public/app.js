@@ -36,16 +36,17 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 
     	$stateProvider
 
-        // HOME STATES AND NESTED VIEWS ========================================
         .state('gasup', {
             url: '/gasup',
             templateUrl: 'snippet-gasForm.html'
         })
 
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('chartview', {
-            // we'll get to this in a bit       
+        .state('listview', {
+            url: '/listview',
+            templateUrl: 'snippet-viewList.html'
+        })
 
+        .state('chartview', {
             url: '/chartview',
             templateUrl: 'snippet-chart.html'
         });
