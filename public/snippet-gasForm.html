@@ -1,11 +1,19 @@
-<div ng-controller="formCtrl">
-	<br><br>
-	<form ng-submit="submit()">	
-			Date: <input type="text" ng-model="date"><br><br>
-			Car Odometer: <input type="text" ng-model="odometer">[km]<br><br>
-			Quantity: <input type="text" ng-model="quantity">[L]<br><br>
-			Total Price: <input type="text" ng-model="totalPrice">[$]<br><br>
-			Unit Price: <input type="text" ng-model="unitPrice">[$/L]<br><br>
-		<input type="submit" id="submit" value="Submit" />
-	</form>
-</div>	
+<style>
+.panel {
+				background:#3E4551;
+		}
+</style>
+
+<div class="panel panel-primary">
+	<div ng-controller="formCtrl">
+		<br><br>
+		<form class="panel-heading" ng-submit="submit()" class="form-group">	
+				<input placeholder="Date: MM/DD/YYYY" type="text" ng-model="date"  class="form-control"><br>
+				<input placeholder="Car Odometer [Km]" type="text"  class="form-control" ng-model="odometer"><br>
+				<input placeholder="Quantity [L]" class="form-control" type="text" ng-model="quantity"><br>
+				<input placeholder="Total Price [$]" class="form-control" type="text" ng-model="totalPrice"><br>
+				<input placeholder="Unit Price [$/L]" class="form-control" type="text" ng-model="unitPrice"><br>
+				<input class="form-control" type="submit" id="submit" value="Submit" />
+		</form>
+	</div>	
+</div>
