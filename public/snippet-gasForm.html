@@ -1,5 +1,11 @@
+<script>
+	$( function() {
+		$( "#datepicker" ).datepicker();
+	} );
+</script>
+
 <style>
-.panel {
+		.panel {
 				background:#3E4551;
 		}
 </style>
@@ -8,11 +14,11 @@
 	<div ng-controller="formCtrl">
 		<br><br>
 		<form class="panel-heading" ng-submit="submit()" class="form-group">	
-				<input placeholder="Date: MM/DD/YYYY" type="text" ng-model="date"  class="form-control"><br>
-				<input placeholder="Car Odometer [Km]" type="text"  class="form-control" ng-model="odometer"><br>
-				<input placeholder="Quantity [L]" class="form-control" type="text" ng-model="quantity"><br>
-				<input placeholder="Total Price [$]" class="form-control" type="text" ng-model="totalPrice"><br>
-				<input placeholder="Unit Price [$/L]" class="form-control" type="text" ng-model="unitPrice"><br>
+				<input placeholder="Date:" type="text" id="datepicker" ng-model="date" readonly="true" class="form-control"><br>
+				<input placeholder="Car Odometer [Km]" type="number"  class="form-control" ng-model="odometer"><br>
+				<input placeholder="Quantity [L]" class="form-control" type="number" step="0.001" ng-model="quantity"><br>
+				<input placeholder="Total Price [$]" class="form-control" type="number" step="0.01" ng-model="totalPrice"><br>
+				<input placeholder="Unit Price [$/L]" class="form-control" type="number" step="0.1" ng-model="unitPrice"><br>
 				<input class="form-control" type="submit" id="submit" value="Submit" />
 		</form>
 	</div>	

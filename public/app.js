@@ -17,7 +17,6 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 
 	app.controller('formCtrl', [ '$scope', function($scope, $http){
 		$scope.gasData = [];
-		$scope.quantity = "4";
 
 		$scope.submit = function(){
 			$scope.gasData.push(this.quantity);
