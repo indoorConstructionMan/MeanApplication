@@ -41,9 +41,11 @@ router.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
-router.get('/api', function(req, res){
+router.post('/api/test/', function(req, res){
+	console.log(req.body.odometer);
 	res.send('Hello from api');
 });
+
 
 app.use('/api', router);
 
