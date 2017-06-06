@@ -11,41 +11,54 @@ app.use('/ng', express.static(__dirname + '/node_modules/angular'));
 app.use('/scripts', express.static(__dirname + '/scripts'));
 app.use(express.static(__dirname + '/public'));
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
+
+var mongoose = require('mongoose');
 mongoose.connect('localhost:27017');
-//Get the default connection
+
 var db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var Schema = mongoose.Schema;
-
-var gasLogSchema = new Schema({
-	date: [Date],
-	car_odometer: [String],
-	quantity: [String], 
-	total_price: [String],
-	unit_price: [String]
-});
-
-var gasLogModel = mongoose.model('gasLogModel', gasLogSchema);
+var gasup = require('./models/gas');
 
 
 var router = express.Router();
 
-router.get('/', function(req, res){
-  res.sendFile(__dirname + '/public/index.html');
+router.use(function(req, res, next){
+	console.log('Something here');
+	next();
 });
 
-router.post('/api/test/', function(req, res){
-	console.log(req.body.odometer);
-	res.send('Hello from api');
-});
+router.route('/gasup')
+	.post(function(req, res){
 
+		var gaslog = new gasup();
+
+		gaslog.date = new Date();
+		gaslog.car_odometer = 2123;
+
+		gaslog.save(function(err){
+			if(err){
+				res.send(err);
+			}
+
+			res.json({message: 'Log Created'});
+		});
+	})
+	.get(function(req, res) {
+        gasup.find(function(err, logs) {
+            if (err)
+                res.send(err);
+
+            res.json(logs);
+        });
+    });
 
 app.use('/api', router);
 
