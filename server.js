@@ -31,17 +31,19 @@ var gasup = require('./models/gas');
 var router = express.Router();
 
 router.use(function(req, res, next){
-	console.log('Something here');
 	next();
 });
 
 router.route('/gasup')
 	.post(function(req, res){
-
 		var gaslog = new gasup();
+		console.log(req.body);
 
-		gaslog.date = new Date();
-		gaslog.car_odometer = 2123;
+		gaslog.car_odometer = req.body.odometer;
+		gaslog.date = req.body.date;
+		gaslog.unit_price = req.body.unitPrice;
+		gaslog.total_price = req.body.totalPrice;
+		gaslog.quantity = req.body.quantity;
 
 		gaslog.save(function(err){
 			if(err){

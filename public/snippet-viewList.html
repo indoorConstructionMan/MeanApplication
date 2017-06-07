@@ -1,5 +1,7 @@
-<div class="list-group">
-	  <a class="list-group-item list-group-item-action">Coffee</a>
-	  <a class="list-group-item list-group-item-action">Tea</a>
-	  <a class="list-group-item list-group-item-action">Milk</a>
+<div class="list-group" ng-controller="gaslogsCtrl" >
+	<div class="list-group-item list-group-item-action" ng-repeat="log in logs">
+		<div ng-repeat="stat in log">
+			{{stat[0]}}		
+		</div>
+	</div>
 </div>

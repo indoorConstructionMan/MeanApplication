@@ -15,17 +15,18 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
   		};
 	});
 
+  app.controller('gaslogsCtrl', ['$scope', '$http', function($scope, $http){
+    $http.get('/api/gasup').then(function(data) {
+      console.log(data.data);
+      $scope.logs = data.data;
+      console.log("Got the data");
+    }, function(data){console.error("did not get data");});
+  }]);
+
 	app.controller('formCtrl', [ '$scope', '$http', function($scope, $http){
 		
     $scope.submit = function(){
-      $http.post('/api/gasup', $scope.gasData).then(function(data) {console.log("posted successfully");}, function(data){console.error("error in posting");});
-
-      // console.log("Why am i running?!");
-      // console.log(this.gasData.date);
-      // console.log(this.gasData.odometer);
-      // console.log(this.gasData.quantity);
-      // console.log(this.gasData.totalPrice);
-      // console.log(this.gasData.unitPrice);    
+      $http.post('/api/gasup', $scope.gasData).then(function(data) {console.log(data.data);console.log("posted successfully");}, function(data){console.error("error in posting");});   
    }}]);   
 
 	app.config(['$qProvider', function ($qProvider) {
