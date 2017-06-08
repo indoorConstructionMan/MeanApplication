@@ -25,7 +25,7 @@ var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var gasup = require('./models/gas');
+var Gasup = require('./models/gas');
 
 
 var router = express.Router();
@@ -36,7 +36,7 @@ router.use(function(req, res, next){
 
 router.route('/gasup')
 	.post(function(req, res){
-		var gaslog = new gasup();
+		var gaslog = new Gasup();
 		console.log(req.body);
 
 		gaslog.car_odometer = req.body.odometer;
@@ -54,11 +54,19 @@ router.route('/gasup')
 		});
 	})
 	.get(function(req, res) {
-        gasup.find(function(err, logs) {
+        Gasup.find(function(err, logs) {
             if (err)
                 res.send(err);
 
             res.json(logs);
+        });
+    })
+    .delete(function(req, res) {
+    	Gasup.findByIdAndRemove({_id: req.query.id}, function(err, gasup) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Successfully deleted' });
         });
     });
 

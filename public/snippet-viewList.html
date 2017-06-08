@@ -1,7 +1,16 @@
+<style>
+	
+	.md-button.md-cornered {
+    	border-radius: 2;
+	}
+
+</style>
+
 <div class="list-group" ng-controller="gaslogsCtrl" >
 	<div class="list-group-item list-group-item-action" ng-repeat="log in logs">
 		<div ng-repeat="stat in log">
-			{{stat[0]}}		
+			{{stat}}		
 		</div>
+		<button type="button" ng-click="deleteLog(log._id)" class="btn btn-primary">Delete</button>
 	</div>
 </div>

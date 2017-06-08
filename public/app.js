@@ -16,11 +16,17 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 	});
 
   app.controller('gaslogsCtrl', ['$scope', '$http', function($scope, $http){
+    
     $http.get('/api/gasup').then(function(data) {
       console.log(data.data);
       $scope.logs = data.data;
       console.log("Got the data");
     }, function(data){console.error("did not get data");});
+
+    $scope.deleteLog = function(log_id){
+      $http.delete('/api/gasup', {id: log_id})
+      .then(function(response){console.log("Success");}, function(response){console.log("Epic fail");})};
+
   }]);
 
 	app.controller('formCtrl', [ '$scope', '$http', function($scope, $http){
