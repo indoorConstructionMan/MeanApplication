@@ -24,10 +24,10 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
     }, function(data){console.error("did not get data");});
 
     $scope.deleteLog = function(log_id){
-      $http.delete('/api/gasup', {id: log_id})
+      $http.delete('/api/gasup', {params: {id: log_id}})
       .then(function(response){console.log("Success");}, function(response){console.log("Epic fail");})};
-
   }]);
+
 
 	app.controller('formCtrl', [ '$scope', '$http', function($scope, $http){
 		
@@ -52,7 +52,8 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 
         .state('listview', {
             url: '/listview',
-            templateUrl: 'snippet-viewList.html'
+            templateUrl: 'snippet-viewList.html',
+            controller: 'gaslogsCtrl' 
         })
 
         .state('chartview', {

@@ -13,13 +13,13 @@
 <div class="panel panel-primary">
 	<div ng-controller="formCtrl">
 	<br>
-		<form class="panel-heading" name="gaslog" ng-submit="gaslog.$valid && submit()" class="form-group">	
+		<form class="panel-heading" name="gaslog" class="form-group">	
 				<input placeholder="Date:" type="text" id="datepicker" ng-model="gasData.date" readonly="true" class="form-control"><br>
 				<input placeholder="Car Odometer [Km]" type="number"  class="form-control" ng-model="gasData.odometer"><br>
 				<input placeholder="Quantity [L]" class="form-control" type="number" step="0.001" ng-model="gasData.quantity"><br>
 				<input placeholder="Total Price [$]" class="form-control" type="number" step="0.01" ng-model="gasData.totalPrice"><br>
 				<input placeholder="Unit Price [$/L]" class="form-control" type="number" step="0.1" ng-model="gasData.unitPrice"><br><br>
-				<button class="form-control" type="submit" id="submit" value="Submit" />
+				<button class="form-control" type="submit" ng-click="gaslog.$valid && submit()" id="submit" value="Submit" />
 		</form>
 	</div>	
 </div>
