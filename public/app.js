@@ -1,4 +1,4 @@
-var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
+var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router', 'ui.materialize']);
 
   // Used factory to be able to pass data between controllers/views.
   app.factory('logService', [ '$http', function($http) {
@@ -86,13 +86,20 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 
     // delete the log that was clicked
     $scope.deleteLog = function(log_id){
-      $http.delete('/api/gasup', {params: {id: log_id}})
-      .then(function(response){
-        $state.go('listview', {}, {reload: "listview"});
-        console.log("Success");
-      }, function(response){
-        console.log("Epic fail");}
-      )}; 
+      if(confirm("Are you sure you want to delete this gas log?") == true){
+        $http.delete('/api/gasup', {params: {id: log_id}})
+        .then(function(response){
+          $state.go('listview', {}, {reload: "listview"});
+          console.log("Success");
+        }, function(response){
+          console.log("Epic fail");}
+        )}; 
+      } 
+
+    $scope.editLog = function(log_id){
+      console.log("Hello from " + log_id);
+    };
+
   }]);
 
  
@@ -100,7 +107,14 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router']);
 		
     // post and create data point
     $scope.submit = function(){
-      $http.post('/api/gasup', $scope.gasData).then(function(data) {console.log(data.data);console.log("posted successfully");}, function(data){console.error("error in posting");});   
+      $http.post('/api/gasup', $scope.gasData).then(
+          function(data) {
+            Materialize.toast("Log saved.", 1500);
+            console.log("posted successfully");}, 
+          function(data){
+            Materialize.toast("Log not saved.", 1500);
+            console.error("error in posting");}
+          );   
    }}]);   
 
 	app.config(['$qProvider', function ($qProvider) {
