@@ -6,11 +6,13 @@
 
 </style>
 
-<div class="list-group" ng-controller="gaslogsCtrl" >
-	<div class="list-group-item list-group-item-action" ng-repeat="log in logs">
-		<div ng-repeat="stat in log">
-			{{stat}}		
-		</div>
-		<button type="button" ng-click="deleteLog(log._id)" class="btn btn-primary">Delete</button>
+<div class="list-group container-fluid" ng-controller="gaslogsCtrl" >
+	<div class="list-group-item list-group-item-action row" ng-repeat="log in logs">
+		<div class="col-sm-4">Date: {{log.date[0].substr(0,10)}}</div>
+		<div class="col-sm-4">Odometer: {{log.car_odometer[0]}}</div>
+		<div class="col-sm-4">Quantity: {{log.quantity[0]}}</div>
+		<div class="col-sm-4">Total Price: {{log.total_price[0]}}</div>
+		<div class="col-sm-4">Unit Price: {{log.unit_price[0]}}</div>
+		<div class="col-sm-4"><button type="button" ng-click="deleteLog(log._id)" class="btn btn-primary">Delete</button></div>
 	</div>
 </div>

@@ -7,6 +7,11 @@
 <style>
 		.panel {
 				background:#3E4551;
+				color: black;
+		}
+
+		.btn {
+			color: black;
 		}
 </style>
 
@@ -19,7 +24,7 @@
 				<input placeholder="Quantity [L]" class="form-control" type="number" step="0.001" ng-model="gasData.quantity"><br>
 				<input placeholder="Total Price [$]" class="form-control" type="number" step="0.01" ng-model="gasData.totalPrice"><br>
 				<input placeholder="Unit Price [$/L]" class="form-control" type="number" step="0.1" ng-model="gasData.unitPrice"><br><br>
-				<button class="form-control" type="submit" ng-click="gaslog.$valid && submit()" id="submit" value="Submit" />
+				<button class="btn btn-secondary form-control" type="submit" ng-click="submit()" id="submit" value="Submit" />
 		</form>
 	</div>	
 </div>

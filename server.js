@@ -62,9 +62,7 @@ router.route('/gasup')
         });
     })
     .delete(function(req, res) {
-    	console.log("Delete Function running...");
     	Gasup.findByIdAndRemove({_id: req.query.id}, function(err, gasup) {
-    		console.log(req.query.id);
             if (err)
                 res.send(err);
 
