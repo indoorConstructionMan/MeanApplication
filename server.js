@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-
 var mongoose = require('mongoose');
 mongoose.connect('localhost:27017');
 
@@ -68,9 +67,28 @@ router.route('/gasup')
 
             res.json({ message: 'Successfully deleted' });
         });
-    });
+    }).put(function(req,res){
+  		Gasup.findById({ _id: req.params.id}, function(err, gasup) {
+	    if (err) {
+	      return res.send(err);
+	    }
+
+	    for (prop in req.body) {
+	      gasup[prop] = req.body[prop];
+	    }
+
+	    // save the log
+	    gasup.save(function(err) {
+	      if (err) {
+	        return res.send(err);
+	      }
+
+	      res.json({ message: 'Gas Log updated!' });
+	    });
+	  });
+});
  
 app.use('/api', router);
 
-app.listen(8080);
+app.listen(8080); 
 console.log("Server listening...");

@@ -34,7 +34,7 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router', 'ui.mat
           for (var name in $scope.DATA[i]){
             if (name == "car_odometer"){
               odometer_temp = $scope.DATA[i+1][name][0];
-              odometer = $scope.DATA[i][name][0];;
+              odometer = $scope.DATA[i][name][0];
             }
             if (name == "date"){
               date_temp = $scope.DATA[i+1][name][0].substr(0,10);
@@ -46,7 +46,7 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router', 'ui.mat
           }
           var kilometers_driven = odometer_temp - odometer;
 
-          mockdata.push({"label": logDate + " - " + date_temp, "value": Math.round(cost/kilometers_driven * 10000)/100}); 
+          mockdata.push({"label": logDate + " to " + date_temp, "value": Math.round(cost/kilometers_driven * 10000)/100}); 
         }
       };
       // defining data layout and naming
@@ -94,10 +94,15 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router', 'ui.mat
         }, function(response){
           console.log("Epic fail");}
         )}; 
-      } 
+      };
 
     $scope.editLog = function(log_id){
       console.log("Hello from " + log_id);
+      $scope.showDiv = !$scope.showDiv;
+    };
+
+    $scope.cancelUpdateLog = function(log_id){
+      $scope.showDiv = !$scope.showDiv;
     };
 
   }]);
@@ -109,6 +114,7 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router', 'ui.mat
     $scope.submit = function(){
       $http.post('/api/gasup', $scope.gasData).then(
           function(data) {
+            $state.go('gasup', {}, {reload: "gasup"});
             Materialize.toast("Log saved.", 1500);
             console.log("posted successfully");}, 
           function(data){

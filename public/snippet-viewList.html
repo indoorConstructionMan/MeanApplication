@@ -5,26 +5,26 @@
 	}
 
 </style>
-<div ng-init="editable=false">
+<div ng-init="showDiv=false">
 	<div class="list-group container-fluid" ng-controller="gaslogsCtrl" >
-		<div class="list-group-item list-group-item-action row" ng-hide="editable" ng-repeat="log in logs">
+		<div class="list-group-item list-group-item-action row" ng-show="!showDiv" ng-repeat="log in logs">
 			<div class="col-sm-2">Date: {{log.date[0].substr(0,10)}}</div>
-			<div class="col-sm-2">Odometer: {{log.car_odometer[0]}}</div>
-			<div class="col-sm-2">Quantity: {{log.quantity[0]}}</div>
-			<div class="col-sm-2">Total Price: {{log.total_price[0]}}</div>
-			<div class="col-sm-2">Unit Price: {{log.unit_price[0]}}</div>
+			<div class="col-sm-2">Odometer: {{log.car_odometer[0]}} [km]</div>
+			<div class="col-sm-2">Quantity: {{log.quantity[0]}} [L]</div>
+			<div class="col-sm-2">Total Price: ${{log.total_price[0]}} </div>
+			<div class="col-sm-2">Unit Price: {{log.unit_price[0]}} [$/L]</div>
 			<div class="col-sm-1"><button type="button" ng-click="deleteLog(log._id)" class="btn btn-danger">Delete</button></div>
 			<div class="col-sm-1"><button type="button" ng-click="editLog(log._id)"" class="btn btn-primary">Edit</button></div>
 		</div>
 
-		<div class="list-group-item list-group-item-action row" ng-show="editable" ng-repeat="log in logs">
-			<input class="col-sm-2">Date: {{log.date[0].substr(0,10)}}
-			<input class="col-sm-2">Odometer: {{log.car_odometer[0]}}
-			<input class="col-sm-2">Quantity: {{log.quantity[0]}}
-			<input class="col-sm-2">Total Price: {{log.total_price[0]}}
-			<input class="col-sm-2">Unit Price: {{log.unit_price[0]}}
-			<div class="col-sm-1"><button type="button" ng-click="updateLog(log._id)" class="btn btn-danger">Save</button></div>
-			<div class="col-sm-1"><button type="button" ng-click="cancelUpdateLog(log._id)" class="btn btn-primary">Cancel</button></div>
+		<div class="list-group-item list-group-item-action row" ng-show="showDiv" ng-repeat="log in logs">
+			<input class="col-sm-2" value="{{log.date[0].substr(0,10)}}">
+			<input class="col-sm-2" value="{{log.car_odometer[0]}}">
+			<input class="col-sm-2" value="{{log.quantity[0]}}">
+			<input class="col-sm-2" value="{{log.total_price[0]}}">
+			<input class="col-sm-2" value="{{log.unit_price[0]}}">
+			<div class="col-sm-1"><button type="button" ng-click="updateLog(log._id)" class="btn btn-success">Save</button></div>
+			<div class="col-sm-1"><button type="button" ng-click="cancelUpdateLog(log._id)" class="btn btn-basic">Cancel</button></div>
 		</div>
 	</div>
 </div>
