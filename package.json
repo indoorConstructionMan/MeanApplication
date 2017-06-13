@@ -1,19 +1,22 @@
 {
-  "name"         : "gaschartapp",
-  "version"      : "0.0.0",
-  "description"  : "Simple gas mileage and charting application.",
-  "main"         : "server.js",
-  "author"       : "Dubsy",
-  "dependencies" : {
-    "angular":          "latest",
-    "body-parser"    : "latest",
-    "express"        : "latest",
+  "name": "gaschartapp",
+  "version": "0.0.0",
+  "description": "Simple gas mileage and charting application.",
+  "main": "server.js",
+  "author": "Dubsy",
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "body-parser": "latest",
+    "bootstrap": "latest",
+    "express": "latest",
+    "fusioncharts": "latest",
+    "gulp": "latest",
+    "jquery": "latest",
     "method-override": "latest",
-    "mongoose"       : "latest",
-    "morgan"         : "latest",
-    "jquery"         : "latest",
-    "gulp"           : "latest",
-    "bootstrap"      : "latest",
-    "fusioncharts"   : "latest"
+    "mongoose": "latest",
+    "morgan": "latest"
   }
 }

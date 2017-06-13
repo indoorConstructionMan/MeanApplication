@@ -111,14 +111,15 @@ var app = angular.module('gasChartApp', ['ng-fusioncharts', 'ui.router', 'ui.mat
 	app.controller('formCtrl', [ '$scope', '$http', function($scope, $http){
 		
     // post and create data point
-    $scope.submit = function(){
+    $scope.submit = function($event){
       $http.post('/api/gasup', $scope.gasData).then(
           function(data) {
+            $scope.gasData = {};
+            // Include $mdTaost in controller function dependancy$mdToast.show($mdToast.simple().textContent('Hello!'));
             $state.go('gasup', {}, {reload: "gasup"});
-            Materialize.toast("Log saved.", 1500);
             console.log("posted successfully");}, 
           function(data){
-            Materialize.toast("Log not saved.", 1500);
+            //$mdToast.show($mdToast.simple().textContent('Nope!'));
             console.error("error in posting");}
           );   
    }}]);   

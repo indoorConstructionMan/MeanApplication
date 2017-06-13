@@ -14,17 +14,27 @@
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
 
+		
+
     	<style>
-        	.navbar { border-radius:0;
+        	.navbar { 
+        			  border-radius:0;
         			  background:#3E4551; 
         			}
         	.grey-background {
-						background-color: #9e9e9e;
+					  background-color: #9e9e9e;
 					}
+			@media (max-width:960px) { 
+					.page {
+							margin: 0;
+							padding: 10px;
+							width: auto;
+					}
+			}
+
     	</style>
 	</head>
 	
@@ -34,7 +44,7 @@
 		    <div class="navbar-header">
 		        <a class="navbar-brand" ui-sref="#">Gas Logger</a>
 		    </div>
-		    <ul class="nav navbar-nav">
+		    <ul class="nav navbar-nav page">
 		        <li><a ui-sref="gasup">Gas up</a></li>
 		        <li><a ui-sref="chartview">View Chart</a></li>
 		        <li><a ui-sref="listview">View Logs</a></li>
